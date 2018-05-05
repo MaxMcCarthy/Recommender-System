@@ -76,6 +76,7 @@
           <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
           <!-- Note: modify verify.php to appropriate action -->
           <form method="POST">
+            {{form.csrf_token}}
             <div class="control-group">
               <h6>Please select your current college.</h6>
               <div class="form-group controls">

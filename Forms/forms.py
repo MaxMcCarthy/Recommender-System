@@ -51,10 +51,10 @@ class SurveyForm(FlaskForm):
     standing = RadioField('Standing', choices=[('Undergraduate', 'Undergraduate'),
                                                 ('Graduate', 'Graduate'),
                                                 ('PHD', 'PhD (Post-Doc, Professor, ...)')])
-    interests = MultiCheckboxField('Interests', choices=[('Seminars', 'Seminars'),
-                                                           ('Workshops', 'Workshops'),
-                                                           ('Job Networking', 'Job Networking'),
-                                                           ('Workouts', 'Workouts'),
-                                                           ('Social Events', 'Social Events'),
-                                                           ('Art', 'Art')])
+    interests = MultiCheckboxField('Interests', choices=[('seminars', 'Seminars'),
+                                                           ('workshops', 'Workshops'),
+                                                           ('job_networking', 'Job Networking'),
+                                                           ('workouts', 'Workouts'),
+                                                           ('social_events', 'Social Events'),
+                                                           ('art', 'Art')])
     submit = SubmitField('Save Preferences')
