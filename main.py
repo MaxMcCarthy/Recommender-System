@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 
 from Forms import forms
 from config.config import db
@@ -33,12 +33,15 @@ def sign_up():
         sql = '''INSERT INTO user (email, password) VALUES (?, ?)'''
         cur.execute(sql, (sign_up_form.data['email'], str(sign_up_form.data['password'])))
         db.commit()
-        result = cur.execute('''SELECT * FROM user''')
-        result = result.fetchall()
-        cur.close()
-        return str(result)
+        return redirect(url_for('survey'))
     print(sign_up_form.errors)
     return render_template('signup.html', form=sign_up_form)
+
+
+@application.route('/survey', methods=['GET', 'POST'])
+def survey():
+    form = forms.SurveyForm()
+    return render_template('survey.html', form=form)
 
 
 if __name__ == '__main__':

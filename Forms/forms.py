@@ -1,9 +1,19 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, RadioField, SelectMultipleField
 from wtforms.validators import InputRequired, Email, ValidationError, Length, EqualTo
+from wtforms.widgets import ListWidget, CheckboxInput
+
 
 from config.config import db
 from database.db import dict_factory
+
+
+colleges = [('Business', 'Business'), ('Education', 'Education'), ('Engineering', 'Engineering'), ('Fine and Applied Arts', 'Fine and Applied Arts'), ('DGS', 'DGS'), ('School of Labor and Employment Relations', 'School of Labor and Employment Relations'), ('Law', 'Law'), ('LAS', 'LAS'), ('Information Sciences', 'Information Sciences'), ('Media', 'Media'), ('Medicine', 'Medicine'), ('Social Work', 'Social Work'), ('VetMed', 'VetMed')]
+
+
+class MultiCheckboxField(SelectMultipleField):
+    widget			= ListWidget(prefix_label=False)
+    option_widget	= CheckboxInput()
 
 
 def arr_factory(cursor, row):
@@ -33,3 +43,18 @@ class SignInForm(FlaskForm):
     email = StringField('Email', validators=[InputRequired(), Email('Please enter a valid email address.')])
     password = PasswordField('Password', validators=[InputRequired()])
     submit = SubmitField('Sign In')
+
+
+class SurveyForm(FlaskForm):
+    college = RadioField('Survey', choices=colleges)
+    college_secondary = RadioField('College', choices=colleges)
+    standing = RadioField('Standing', choices=[('Undergraduate', 'Undergraduate'),
+                                                ('Graduate', 'Graduate'),
+                                                ('PHD', 'PhD (Post-Doc, Professor, ...)')])
+    interests = MultiCheckboxField('Interests', choices=[('Seminars', 'Seminars'),
+                                                           ('Workshops', 'Workshops'),
+                                                           ('Job Networking', 'Job Networking'),
+                                                           ('Workouts', 'Workouts'),
+                                                           ('Social Events', 'Social Events'),
+                                                           ('Art', 'Art')])
+    submit = SubmitField('Save Preferences')
