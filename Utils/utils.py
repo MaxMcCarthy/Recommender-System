@@ -13,12 +13,12 @@ def generate_doc(csv_file):
                     document += ' ' + row['description']
                 if row['title'] != 'NA':
                     document += ' ' + row['title']
-                if row['sponser'] != 'NA':
+                if row['sponsor'] != 'NA':
                     document += ' ' + row['sponsor']
                 if row['event_type'] != 'NA':
                     document += ' ' + row['event_type']
-                if row['topic'] != 'NA':
-                    document += ' ' + row['topic']
+                if row['topics'] != 'NA':
+                    document += ' ' + row['topics']
     return document
 
 
