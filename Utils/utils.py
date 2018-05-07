@@ -1,7 +1,6 @@
 import csv
 import metapy
 
-
 def generate_doc(csv_file):
     document = ''
     title_list = {}
@@ -14,25 +13,31 @@ def generate_doc(csv_file):
                     document += ' ' + row['description']
                 if row['title'] != 'NA':
                     document += ' ' + row['title']
+                if row['sponser'] != 'NA':
+                    document += ' ' + row['sponsor']
+                if row['event_type'] != 'NA':
+                    document += ' ' + row['event_type']
+                if row['topic'] != 'NA':
+                    document += ' ' + row['topic']
     return document
 
 
 def parse_doc(doc):
 
-    tok = metapy.analyzers.ICUTokenizer()
+    tok = metapy.analyzers.ICUTokenizer(suppress_tags=True)
 
     tok.set_content(doc.content())
-
+    tok = metapy.analyzers.LowercaseFilter(tok)
     tok2 = metapy.analyzers.ListFilter(tok, "lemur-stopwords.txt", metapy.analyzers.ListFilter.Type.Reject)
-    tok2.set_content(doc.content())
+    #tok2.set_content(doc.content())
 
     tok3 = metapy.analyzers.Porter2Filter(tok2)
-    tok3.set_content(doc.content())
+    #tok3.set_content(doc.content())
 
-    tok4 = metapy.analyzers.LowercaseFilter(tok3)
-    tok4.set_content(doc.content())
+    #tok4 = metapy.analyzers.LowercaseFilter(tok3)
+    #tok4.set_content(doc.content())
 
-    return tok4
+    return tok3
 
 
 def get_word_counts(tokens):
@@ -50,7 +55,7 @@ def get_word_counts(tokens):
 
 
 if __name__ == '__main__':
-    document = generate_doc('/Users/Max/PycharmProjects/Recommender-System/events.csv')
+    document = generate_doc('events.csv')
     doc = metapy.index.Document()
     doc.content(document)
     tokens = parse_doc(doc)
