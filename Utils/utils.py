@@ -1,7 +1,6 @@
 import csv
 import metapy
 
-
 def generate_doc(csv_file):
     document = ''
     title_list = {}
@@ -19,7 +18,7 @@ def generate_doc(csv_file):
 
 def parse_doc(doc):
 
-    tok = metapy.analyzers.ICUTokenizer()
+    tok = metapy.analyzers.ICUTokenizer(suppress_tags=True)
 
     tok.set_content(doc.content())
 
@@ -53,7 +52,7 @@ def get_word_counts(tokens):
 
 
 if __name__ == '__main__':
-    document = generate_doc('/Users/Max/PycharmProjects/Recommender-System/events.csv')
+    document = generate_doc('events.csv')
     doc = metapy.index.Document()
     doc.content(document)
     tokens = parse_doc(doc)
