@@ -23,16 +23,19 @@ def parse_doc(doc):
 
     tok.set_content(doc.content())
 
-    tok2 = metapy.analyzers.ListFilter(tok, "lemur-stopwords.txt", metapy.analyzers.ListFilter.Type.Reject)
+    tok1 = metapy.analyzers.LowercaseFilter(tok)
+    tok1.set_content(doc.content())
+
+    tok2 = metapy.analyzers.ListFilter(tok1, "lemur-stopwords.txt", metapy.analyzers.ListFilter.Type.Reject)
     tok2.set_content(doc.content())
 
     tok3 = metapy.analyzers.Porter2Filter(tok2)
     tok3.set_content(doc.content())
+    #
+    # tok4 = metapy.analyzers.LowercaseFilter(tok3)
+    # tok4.set_content(doc.content())
 
-    tok4 = metapy.analyzers.LowercaseFilter(tok3)
-    tok4.set_content(doc.content())
-
-    return tok4
+    return tok3
 
 
 def get_word_counts(tokens):
