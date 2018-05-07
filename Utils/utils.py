@@ -1,6 +1,7 @@
 import csv
 import metapy
 
+
 def generate_doc(csv_file):
     document = ''
     title_list = {}
@@ -30,9 +31,6 @@ def parse_doc(doc):
 
     tok3 = metapy.analyzers.Porter2Filter(tok2)
     tok3.set_content(doc.content())
-    #
-    # tok4 = metapy.analyzers.LowercaseFilter(tok3)
-    # tok4.set_content(doc.content())
 
     return tok3
 
