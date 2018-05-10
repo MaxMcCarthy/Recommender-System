@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Survey</title>
+    <title>Customize Your Event Recommendations</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -25,33 +25,6 @@
 
   <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="../index.html">Start Bootstrap</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../post.html">Sample Post</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../contact.html">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('{{url_for('static', filename='images/survey-bg.jpg')}}')">
       <div class="overlay"></div>
@@ -59,7 +32,7 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="page-heading">
-              <h1>Survey</h1>
+              <h1>Customize Your Event Recommendations</h1>
             </div>
           </div>
         </div>
@@ -70,7 +43,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>Fill out the form below.</p>
+          <p>Please fill out the form below, so we can provide the most relevant events to you.</p>
           <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
           <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
           <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
@@ -78,7 +51,7 @@
           <form method="POST">
             {{form.csrf_token}}
             <div class="control-group">
-              <h6>Please select your current college.</h6>
+              <h6>Select your current college.</h6>
               <div class="form-group controls">
                 {% for option in form.college %}
                 {{option}} {{option.label(class_="mb-0")}}<br>
