@@ -14,8 +14,8 @@ def write_classifications():
                'description', 'seminars', 'workshops', 'job_networking', 'workouts', 'social_events', 'arts']
     fieldnames = ['seminars', 'workshops', 'job_networking', 'workouts', 'social_events', 'arts']
 
-    tag_writeer = csv.DictWriter(tag_file, headers)
-    tag_writeer.writeheader()
+    tag_writer = csv.DictWriter(tag_file, headers)
+    tag_writer.writeheader()
 
     for event in event_reader:
         word_file = open('words.csv', 'r')
@@ -34,7 +34,7 @@ def write_classifications():
             if word_line['word'] in tokens:
                 for tag in fieldnames:
                     event[tag] += int(word_line[tag])
-        tag_writeer.writerow(event)
+        tag_writer.writerow(event)
 
 
 def classify_doc(csv_file, word_file):

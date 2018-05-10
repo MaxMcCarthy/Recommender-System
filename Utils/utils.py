@@ -12,7 +12,7 @@ def remove_duplicates_from_csv():
     writer = csv.DictWriter(tag_file, headers)
     writer.writeheader()
     seen = {}
-    with open('/Users/Max/PycharmProjects/Recommender-System/config/taged_events.csv') as csvfile:
+    with open('/Users/Max/PycharmProjects/Recommender-System/Config/taged_events.csv') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             if row['title'] not in seen:

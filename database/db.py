@@ -23,6 +23,7 @@ def create_connection(db_file):
 def init_tables(conn):
     init_user_table(conn)
     init_interests_tables(conn)
+    init_events_tables(conn)
     init_document_table(conn)
 
 
@@ -55,6 +56,37 @@ def init_interests_tables(conn):
             arts BOOLEAN DEFAULT(0)
             );
         '''
+    cur = conn.cursor()
+    cur.execute(sql)
+    conn.commit()
+
+
+def init_events_tables(conn):
+    sql = '''CREATE TABLE IF NOT EXISTS events (
+    doc_id INTEGER PRIMARY KEY,
+    title CHAR(255),
+    url CHAR(255),
+    event_type CHAR(255),
+    sponsor CHAR(255),
+    location CHAR(255),
+    date_ CHAR(255),
+    speaker CHAR(255),
+    originating_calendar CHAR(255),
+    topics CHAR(255),
+    cost CHAR(255),
+    contact CHAR(255),
+    e_mail CHAR(255),
+    phone CHAR(255),
+    registration CHAR(255),
+    description BLOB,
+    seminars INTEGER,
+    workshops INTEGER,
+    job_networking INTEGER,
+    workouts INTEGER,
+    social_events INTEGER,
+    arts INTEGER
+    );'''
+
     cur = conn.cursor()
     cur.execute(sql)
     conn.commit()

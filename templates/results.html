@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <h1 class="text-center">Your Results</h1>
     {% for event in events %}
-        <div>{{ event[1][1] }}</div>
-        <br>
+        <div><p class="text-center">{{ event[1][1] }}</p></div>
     {% endfor %}
 </body>
 </html>

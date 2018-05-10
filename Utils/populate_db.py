@@ -2,7 +2,7 @@ import csv
 import metapy
 
 from Utils.utils import parse_doc
-from config.config import db
+from Config.config import db
 
 
 words = ['research',
@@ -57,8 +57,7 @@ def get_word_counts(document):
 
 # 54
 
-
-if __name__ == '__main__':
+def populate_documents():
     with open('../events.csv') as csvfile:
         reader = csv.DictReader(csvfile)
         column_names = words.copy()
@@ -74,3 +73,24 @@ if __name__ == '__main__':
                                                        row['topics'], row['cost'], row['contact'], row['e-mail'], row['phone'], row['registration'])
             cur.execute(sql, params)
             db.commit()
+
+
+def populate_events():
+    print(db)
+    with open('../taged_events_no_duplicates.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        cur = db.cursor()
+        for row in reader:
+            sql = '''INSERT INTO events
+                    (doc_id,title,url,event_type,sponsor,location,date_,speaker,originating_calendar,topics,cost,contact,e_mail,phone,registration,description,seminars,workshops,job_networking,workouts,social_events,arts)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'''
+            params = (row['doc_id'], row['title'], row['url'], row['event_type'], row['sponsor'], row['location'], row['date'], row['speaker'], row['originating_calendar'],
+                                    row['topics'], row['cost'], row['contact'], row['e-mail'], row['phone'], row['registration'], row['description'], row['seminars'], row['workshops'],
+                      row['job_networking'], row['workouts'], row['social_events'], row['arts'])
+            cur.execute(sql, params)
+    db.commit()
+
+
+if __name__ == '__main__':
+    # populate_documents()
+    populate_events()

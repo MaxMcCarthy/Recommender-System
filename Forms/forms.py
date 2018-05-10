@@ -4,7 +4,7 @@ from wtforms.validators import InputRequired, Email, ValidationError, Length, Eq
 from wtforms.widgets import ListWidget, CheckboxInput
 
 
-from config.config import db
+from Config.config import db
 from database.db import dict_factory
 
 

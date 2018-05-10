@@ -5,7 +5,7 @@ import csv
 with open('taged_events_no_duplicates.csv', newline='\n') as csv_file:
     eventsreader = csv.reader(csv_file, delimiter=',')
     header = next(eventsreader)
-    types = header[-6:]
+    types = ['seminars', 'workshops', 'job_networking', 'workouts', 'social_events', 'arts']
     for t in types: 
         events[t] = set()
     for row in eventsreader: 

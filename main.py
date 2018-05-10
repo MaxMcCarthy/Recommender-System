@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for
 
 from Forms import forms
-from config.config import db
+from Config.config import db
 from Recommender.recommender import recommend
 
 application = Flask(__name__)
@@ -81,7 +81,7 @@ def survey(user_id):
         cur.execute('''UPDATE user SET college=?, secondary_college=?, degree_level=? WHERE user_id=?''',
                     (form.data['college'], form.data['college_secondary'], form.data['standing'], user_id))
         update = '''UPDATE interests 
-                    SET seminars=?, workshops=?, job_networking=?, workouts=?, social_events=?, art=? 
+                    SET seminars=?, workshops=?, job_networking=?, workouts=?, social_events=?, arts=? 
                     WHERE user_id=?'''
         params = tuple(create_interests(form.data['interests'])) + (user_id,)
         cur.execute(update, params)
