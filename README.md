@@ -12,19 +12,33 @@ _______
 ## Folder Contents
 
 Config
+
 Forms
+
 Recommender
+
 Scraper
+
 Utils 
+
 bagOfWords
+
 database
+
 eventClassification
+
 static
+
 templates
+
 events.csv
+
 main.py
+
 requirements.txt
+
 taged_events_no_duplicates.csv
+
 
 
 ## Software
