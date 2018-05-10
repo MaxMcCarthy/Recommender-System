@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for
 
 from Forms import forms
 from config.config import db
+from Recommender.recommender import recommend
 
 application = Flask(__name__)
 application.secret_key = 'super secret string'  # Change this!
@@ -12,16 +13,19 @@ application.debug = True
 def home_page():
     sign_in_form = forms.SignInForm()
     if sign_in_form.validate_on_submit():
+
+        # locate user email in database
         cur = db.cursor()
         user = cur.execute('''SELECT * FROM user WHERE email=?''', (sign_in_form.data['email'],))
         user = user.fetchone()
+
+        # see if password in the database matches the given password
         if user:
-            if str(user['password']) == sign_in_form.data['password']:
-                result = cur.execute('''SELECT * FROM user''')
-                result = result.fetchall()
-                return 'success! you\'re logged in! \n' + str(result)
+            if str(user['password']) == str(sign_in_form.data['password']):
+                return redirect(url_for('results', user_id=user['user_id']))
         sign_in_form.email.errors.append(u'Invalid Credentials!')
-    print(sign_in_form.errors)
+
+    # return login page
     return render_template('login.html', form=sign_in_form)
 
 
@@ -38,7 +42,7 @@ def sign_up():
 
         # get new user id
         user_id = cur.execute('''SELECT user_id FROM user WHERE email=?''', (sign_up_form.data['email'],))
-        user_id = user_id.fetchone()
+        user_id = user_id.fetchone()['user_id']
 
         # create interests
         sql = '''INSERT INTO interests (user_id) VALUES (?)'''
@@ -47,7 +51,7 @@ def sign_up():
         cur.close()
 
         # redirect to survey
-        return redirect(url_for('survey'), user_id=user_id)
+        return redirect(url_for('survey', user_id=user_id))
     print(sign_up_form.errors)
     return render_template('signup.html', form=sign_up_form)
 
@@ -82,8 +86,23 @@ def survey(user_id):
         params = tuple(create_interests(form.data['interests'])) + (user_id,)
         cur.execute(update, params)
         db.commit()
-        return 'THANKS'
+        return redirect(url_for('results', user_id=user_id))
     return render_template('survey.html', form=form)
+
+
+@application.route('/<user_id>/results', methods=['GET'])
+def results(user_id):
+    cur = db.cursor()
+    interests = cur.execute('''SELECT seminars, workshops, job_networking, workouts, social_events, arts FROM interests WHERE user_id=?''', (user_id,))
+    interests = interests.fetchone()
+    interest_list = []
+    for key in interests.keys():
+        if interests[key] == 1:
+            interest_list.append(key)
+
+    results = recommend(interest_list)
+
+    return render_template('results.html', events=results)
 
 
 if __name__ == '__main__':

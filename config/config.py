@@ -11,6 +11,8 @@ while split_path[-1] != 'Recommender-System':
     print(path)
     split_path = path.split('/')
 
-path += "recommender-db.db"
+path += "/recommender-db.db"
+
+print(path)
 
 db = create_connection(path)

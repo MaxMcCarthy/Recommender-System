@@ -4,52 +4,7 @@ import metapy
 from Utils.utils import parse_doc
 
 
-words = ['research',
-         'exhibit',
-         'art',
-         'music',
-         'work',
-         'write',
-         'scienc',
-         'program',
-         'yoga',
-         'symposium',
-         'graduat',
-         'tour',
-         'servic',
-         'engin',
-         'market',
-         'talk',
-         'perform',
-         'societ',
-         'workshop',
-         'solar',
-         'folk',
-         'project',
-         'krannert',
-         'ncsa',
-         'museum',
-         'system',
-         'retreat',
-         'book',
-         'artist',
-         'band',
-         'fair',
-         'allerton',
-         'onlin',
-         'bike',
-         'agricultur',
-         'energi',
-         'convers',
-         'jazz',
-         'practic']
-
-
 def write_classifications():
-
-    word_file = open('words.csv', 'r')
-    word_reader = csv.DictReader(word_file)
-
     event_file = open('../events.csv', 'r')
     event_reader = csv.DictReader(event_file)
 

@@ -52,7 +52,7 @@ def init_interests_tables(conn):
             job_networking BOOLEAN DEFAULT(0),
             workouts BOOLEAN DEFAULT(0),
             social_events BOOLEAN DEFAULT(0),
-            art BOOLEAN DEFAULT(0)
+            arts BOOLEAN DEFAULT(0)
             );
         '''
     cur = conn.cursor()

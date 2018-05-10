@@ -2,7 +2,7 @@ events = {}
 metadata = {}
 
 import csv
-with open('taged_events.csv', newline='\n') as csv_file:
+with open('/Users/Max/PycharmProjects/Recommender-System/config/taged_events.csv', newline='\n') as csv_file:
     eventsreader = csv.reader(csv_file, delimiter=',')
     header = next(eventsreader)
     types = header[-6:]
@@ -17,7 +17,7 @@ with open('taged_events.csv', newline='\n') as csv_file:
                 events[types[idx]].add(url)
                 
                
-def Recommend(survey_categories): 
+def recommend(survey_categories):
     sets = []
     for cat in survey_categories: 
         sets.append(events[cat])
@@ -26,6 +26,6 @@ def Recommend(survey_categories):
     all_events = []
     for url in all_urls: 
         all_events.append(metadata[url])
-        
-        
+
     return all_events
+
