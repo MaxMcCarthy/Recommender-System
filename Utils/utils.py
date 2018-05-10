@@ -2,6 +2,24 @@ import csv
 import metapy
 
 
+def remove_duplicates_from_csv():
+    headers = ['doc_id', 'title', 'url', 'event_type', 'sponsor', 'location', 'date', 'speaker', 'views',
+               'originating_calendar', 'topics', 'cost', 'contact', 'e-mail', 'phone', 'registration',
+               'description', 'seminars', 'workshops', 'job_networking', 'workouts', 'social_events', 'arts']
+
+    tag_file = open('taged_events_no_duplicates.csv', 'w+')
+
+    writer = csv.DictWriter(tag_file, headers)
+    writer.writeheader()
+    seen = {}
+    with open('/Users/Max/PycharmProjects/Recommender-System/config/taged_events.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row['title'] not in seen:
+                seen[row['title']] = True
+                writer.writerow(row)
+
+
 def generate_doc(csv_file):
     document = ''
     title_list = {}
@@ -50,6 +68,7 @@ def get_word_counts(tokens):
 
 
 if __name__ == '__main__':
+    # remove_duplicates_from_csv()
     document = generate_doc('events.csv')
     doc = metapy.index.Document()
     doc.content(document)

@@ -2,7 +2,7 @@ events = {}
 metadata = {}
 
 import csv
-with open('/Users/Max/PycharmProjects/Recommender-System/config/taged_events.csv', newline='\n') as csv_file:
+with open('taged_events_no_duplicates.csv', newline='\n') as csv_file:
     eventsreader = csv.reader(csv_file, delimiter=',')
     header = next(eventsreader)
     types = header[-6:]
