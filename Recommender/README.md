@@ -1,8 +1,5 @@
 # Recommendation System:
-
-If the user is interested in an event type, all events of that type are returned to them 
-
-Sets have been created for each category that is an option in the survey and then created a function for returning events that are part of the union of the selected categories.
+The recommender uses the the database to find events that are in accordance to what the user selected in the survey and then return events that fall within that category to the user. If the user is interested in an event type, all events of that type are returned to them. Sets have been created for each category that is an option in the survey and then created a function for returning events that are part of the union of the selected categories.
 
 ## Possible future improvements:
 
