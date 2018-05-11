@@ -6,4 +6,4 @@ This file was ran outside of the main.py file to find the most common words from
 
 Once the top words were found, the top 100 words were sorted through and tagged as an event type. Each word was search in the events.csv file to see the relevance of the word. Non-relevant words were removed. This left us 40 words which can be seen with their tags in words.csv. 
 
-Finally, the words were added to the database using the populate_db.py script. 
+Finally, the words were added to the database using the populate_db.py script. This script needs to be ran seperatly than the main.py file. 
