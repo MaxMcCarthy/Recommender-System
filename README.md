@@ -6,6 +6,7 @@ This web application's main purpose is to recommend events in and around Urbana-
 
 The user can login to their existing account or sign up and create a new account with an email address and a password. If the user signs up and creates a new account, they fill out a survey with information about their college, possible secondary college, academic standing or degree level, and any other specific activities that represent their interests. The information in the survey is used to determine what activities or events will be recommended to the user. Afterwards, the user will be provided with a list of recommended events that the user likely will find relevant or interesting. If the user logs in, the user will also find the list of recommended events.
 
+To run this project, clone the entire repository, install the requirements from the requirements.txt through pip and then run the main.py file.
 
 ## Project Contents
 
