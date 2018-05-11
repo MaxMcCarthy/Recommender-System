@@ -43,7 +43,7 @@ I designed a webscraper using beautifulsoup4. The scraper looks at several UIUC 
 
 Lastly, I developed an SQL schema for our project. The project actively uses the user table and interests table to log users in and determine which events to display. The database includes support for future development where the scraper will write directly to the database instead of intermediate CSV files.
 
-Lily: _____
+Lily: I created the system that would go through the event words and figure out the top words describing events from the title and description of the events. After finding the top 100 words, I sorted through these words to find the ones most relevant to the events. From the 100 words, I selected 40 words and tagged them as the six event types. Finally, I created another script to tag the events with their type based on the top 40 words that had been selected and tagged.  
 
 Riya: I created the recommender system using the modified database file so that the web application returns events in the categories the user selected. I built the recommender function along with the different sets that hold the categorized events. 
 
