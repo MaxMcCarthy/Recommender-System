@@ -11,3 +11,5 @@ The categories used to find this are "title" "sponser" and "topic" from the even
 Please see stop words for additional removed words from finding top 25 words. The words added are above the symbols in this file. 
 
 The output is: ['art', 'american', 'music', 'exhibit', 'archiv', 'recreat', 'museum', 'agricultur', 'studi', 'krannert', 'farm', 'tour', 'spurlock', 'work', 'cultur', 'yoga', 'kam', 'orchestra', 'outreach', 'communic', 'unexpect', 'birthday', 'establish', 'water', 'adventur']
+
+To generate the above 25 words run the bagOfWordsAttempt1.py file with everything else seen in this folder. 
