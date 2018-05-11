@@ -1,3 +1,5 @@
+# bagOfWords
+
 This folder contains the information about finding the 25 most common words. 
 
 The categories used to find this are "title" "sponser" and "topic" 
