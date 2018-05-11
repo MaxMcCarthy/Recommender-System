@@ -14,7 +14,7 @@ The user can login to their existing account or sign up and create a new account
 * Recommender - ___
 * Scraper - This contains files that use the beautifulsoup4 package to scrape university webpages and gather upcoming events.
 * Utils - This file contains general utilities that take a document, stem it, and write to a CSV file with the counts of each word in all of the documents. From here, we selected the most popular 40 words (removing useless words like Illinois and event"). These 40 words were each associated with 1 tag from \['seminars', 'workshops', 'job_networking', 'workouts', 'social_events', 'arts'\]. There is also a file that helps populate the database from a CSV file of events.
-* bagOfWords - ___
+* bagOfWords - This folder contains the original python script to find the top words from the events.csv file. This code was later updated to what is seen in the Utils folder. 
 * database - This file contains the python and SQL needed to create the database.
 * eventClassification - This contains a file that takes the events, reads all of the words in the description, and checks to see if any of the words are in the 40 key words. If there are any, the document is assigned the appropriate tag from \['seminars', 'workshops', 'job_networking', 'workouts', 'social_events', 'arts'\].
 * static - Contains any static elements for the webpage including the CSS file and images
