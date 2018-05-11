@@ -27,12 +27,12 @@ The user can login to their existing account or sign up and create a new account
 
 ## Software
 
-* Python (version ____)
-* Flask (version __)
-* Beautiful Soup (version ___)
-* metapy (version __)
-* __ (other Python extensions/libraries)
-* HTML (version ____)
+* Python 3
+* Flask 
+* Beautiful Soup 
+* metapy
+* requests
+* HTML
 
 
 ## Contributions
