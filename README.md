@@ -9,20 +9,20 @@ The user can login to their existing account or sign up and create a new account
 
 ## Project Contents
 
-* Config - ___
-* Forms - ___
+* Config - Contains the configuration for the database that allows the database instance to be used by all files in the project.
+* Forms - A collection of Flask Form Classes that are used to collect and validate user input. 
 * Recommender - ___
-* Scraper - ___
-* Utils - ___
+* Scraper - This contains files that use the beautifulsoup4 package to scrape university webpages and gather upcoming events.
+* Utils - This file contains general 
 * bagOfWords - ___
 * database - ___
 * eventClassification - ___
 * static - Contains any static elements for the webpage including the CSS file and images
-* templates - ___
+* templates - Contains all website (HTML) files
 * events.csv - ___
-* main.py - ___
-* requirements.txt - ___
-* taged_events_no_duplicates.csv - ___
+* main.py - This is the main function for the application. It contains all of the flask code the powers the web app.
+* requirements.txt - A text file detailing the package requirements of the project. Run "pip3 install -r requirements.txt" to get all of the requirements installed on your computer.
+* taged_events_no_duplicates.csv - Final csv file. It contains all the events and their tags. Duplicate events have been removed from this file.
 
 
 ## Software
