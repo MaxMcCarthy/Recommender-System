@@ -12,4 +12,4 @@ Please see stop words for additional removed words from finding top 25 words. Th
 
 The output is: ['art', 'american', 'music', 'exhibit', 'archiv', 'recreat', 'museum', 'agricultur', 'studi', 'krannert', 'farm', 'tour', 'spurlock', 'work', 'cultur', 'yoga', 'kam', 'orchestra', 'outreach', 'communic', 'unexpect', 'birthday', 'establish', 'water', 'adventur']
 
-To generate the above 25 words run the bagOfWordsAttempt1.py file with everything else seen in this folder. 
+To generate the above 25 words run the bagOfWordsAttempt1.py file (use python3) with everything else seen in this folder. If not installed, install the python package metapy as well. 
